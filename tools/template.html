@@ -1,0 +1,476 @@
+<title>自然考點導航</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: answer-card vernacular. Desktop = sticky left index (the unit ranking doubles as navigation) + main column; phone = index collapses into a horizontal strip. */
+:root{
+  --paper:#f5f6f3; --sheet:#ffffff; --ink:#1d2433; --ink-2:#5a6272; --ink-3:#8a909b; --rule:#e0e3dd;
+  --omr:#c8325a; --omr-soft:#f8e4ea; --grid:#eceee9;
+  --easy:#2f7d5b; --mid:#a8741a; --hard:#b4322e;
+  --heat-0:#eef0eb; --heat-1:#f3c9d4; --heat-2:#e891a8; --heat-3:#d4567a; --heat-4:#a8213f; --on-heat:#ffffff;
+  --f-display:"Noto Serif TC","Songti TC",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --side:272px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#13161c; --sheet:#1b1f27; --ink:#e7e9ee; --ink-2:#a3aab6; --ink-3:#737a86; --rule:#2b313c;
+  --omr:#f0789a; --omr-soft:#3a2129; --grid:#1d2129;
+  --easy:#6cc59b; --mid:#e0b05a; --hard:#f08a84;
+  --heat-0:#262b35; --heat-1:#4a2632; --heat-2:#7a3149; --heat-3:#b84468; --heat-4:#f0789a; --on-heat:#13161c;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#13161c; --sheet:#1b1f27; --ink:#e7e9ee; --ink-2:#a3aab6; --ink-3:#737a86; --rule:#2b313c;
+  --omr:#f0789a; --omr-soft:#3a2129; --grid:#1d2129;
+  --easy:#6cc59b; --mid:#e0b05a; --hard:#f08a84;
+  --heat-0:#262b35; --heat-1:#4a2632; --heat-2:#7a3149; --heat-3:#b84468; --heat-4:#f0789a; --on-heat:#13161c;
+  color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--paper)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--omr);outline-offset:2px}
+
+/* ---------- masthead ---------- */
+.mast{background-color:var(--sheet);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;border-bottom:3px double var(--omr)}
+.mast-in{max-width:1240px;margin:0 auto;padding-block:28px 22px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);grid-template-areas:"text band" "text side";gap:14px 40px;align-items:end}
+.mast-in > div:first-child{grid-area:text}
+.hero-band{grid-area:band;background:#f7dbe2;border-radius:14px;display:grid;place-items:center;overflow:hidden;width:100%}
+.hero-band .art.hero{display:block;width:100%;max-width:560px;height:auto;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)}
+.mast-side{grid-area:side}
+.eyebrow{font-family:var(--f-body);font-size:12.5px;letter-spacing:.06em;color:var(--omr);font-weight:500}
+h1{font-family:var(--f-display);font-weight:900;font-size:clamp(28px,4.6vw,46px);line-height:1.15;margin:6px 0 10px;text-wrap:balance}
+.tagline{font-family:var(--f-display);font-weight:600;font-size:clamp(17px,2.2vw,21px);color:var(--omr);margin:-4px 0 12px;text-wrap:balance}
+.lede{color:var(--ink-2);max-width:62ch;display:grid;gap:6px}
+.lede p{margin:0}
+.feats{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:640px}
+.feats li{display:grid;gap:2px;background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:9px 13px;min-width:0}
+.feats b{font-family:var(--f-display);font-weight:900;color:var(--omr);white-space:nowrap;font-size:15px}
+.feats b::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--omr);margin-right:7px;vertical-align:1px}
+.feats span{font-size:13.5px;color:var(--ink);min-width:0}
+.closing{margin:14px 0 0;font-weight:700;color:var(--ink)}
+.mast-side{display:grid;gap:10px;justify-items:end}
+.prog{font-size:12.5px;color:var(--easy);font-weight:500;min-height:1em}
+.stats{display:grid;grid-template-columns:repeat(3,auto);gap:4px 28px;font-variant-numeric:tabular-nums}
+.stat b{display:block;font-family:var(--f-mono);font-size:30px;font-weight:600;line-height:1.1}
+.stat span{font-size:12px;color:var(--ink-2);letter-spacing:.06em}
+
+/* ---------- filter bar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+.bar-in{max-width:1240px;margin:0 auto;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.grp{display:flex;align-items:center;gap:6px}
+.grp > .lab{font-size:12px;color:var(--ink-2)}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);overflow:hidden}
+.seg button{font:inherit;font-size:13px;border:0;background:none;color:var(--ink-2);padding:3px 10px;cursor:pointer;border-right:1px solid var(--rule)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--omr);color:var(--sheet);font-weight:500}
+.tog{font:inherit;font-size:13px;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);color:var(--ink-2);padding:3px 10px;cursor:pointer}
+.tog[aria-pressed="true"]{border-color:var(--omr);color:var(--omr)}
+#q{font:inherit;font-size:13px;padding:4px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);color:var(--ink);width:220px;max-width:100%}
+.grow{flex:1 1 0}
+#reset{font:inherit;font-size:12px;border:0;background:none;color:var(--ink-2);text-decoration:underline;cursor:pointer;padding:0}
+
+/* ---------- body layout ---------- */
+.layout{max-width:1240px;margin:0 auto;padding-block:24px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:32px;align-items:start}
+nav.index{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--barH,56px) + 14px);max-height:calc(100vh - var(--barH,56px) - 32px);overflow:auto;padding-right:4px}
+.index h2{font-size:12px;font-weight:500;color:var(--ink-2);letter-spacing:.08em;margin:0 0 8px;display:flex;justify-content:space-between}
+.index ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.index a{display:grid;grid-template-columns:2em minmax(0,1fr) auto;gap:2px 8px;align-items:center;text-decoration:none;padding:5px 8px;border-radius:5px}
+.index a:hover{background:var(--sheet)}
+.index a.on{background:var(--sheet);box-shadow:inset 3px 0 0 var(--omr)}
+.index .rk{font-family:var(--f-mono);font-size:12px;color:var(--omr);font-weight:600}
+.index .nm{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.index .pt{font-family:var(--f-mono);font-size:12px;color:var(--ink-2)}
+.index .mb{grid-column:2 / 4;height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.index .mb i{display:block;height:100%;background:var(--omr)}
+
+main{min-width:0;display:grid;gap:44px}
+h2.sec{font-family:var(--f-display);font-weight:600;font-size:22px;margin:0 0 4px}
+.note{font-size:13px;color:var(--ink-2);margin:0}
+
+/* overview */
+.overview{display:grid;gap:12px;min-width:0}
+.overview > *{min-width:0}
+.ovtable{overflow-x:auto;background:var(--sheet);border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+.ovtable th,.ovtable td{padding:7px 12px;text-align:left;border-bottom:1px solid var(--rule);white-space:nowrap}
+.ovtable tr:last-child td{border-bottom:0}
+.ovtable th{font-size:12px;font-weight:500;color:var(--ink-2);background:var(--paper)}
+td.num{font-family:var(--f-mono);text-align:right}
+td.rk{font-family:var(--f-mono);color:var(--omr);font-weight:600}
+td.unit a{text-decoration:none;font-weight:500}
+td.unit a:hover{color:var(--omr)}
+.bar-cell{min-width:120px;width:30%}
+.hb{height:8px;background:var(--omr);border-radius:2px;min-width:2px}
+.heat{display:inline-flex;gap:3px}
+.heat span{width:26px;height:18px;border-radius:3px;display:inline-block;font-family:var(--f-mono);font-size:10px;line-height:18px;text-align:center;color:var(--ink)}
+.h0{background:var(--heat-0)}.h1{background:var(--heat-1)}.h2{background:var(--heat-2)}.h3{background:var(--heat-3);color:var(--on-heat)!important}.h4{background:var(--heat-4);color:var(--on-heat)!important}
+.legend{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--ink-2);flex-wrap:wrap}
+details.more-ov summary{cursor:pointer;font-size:13px;color:var(--omr);padding:8px 12px;list-style:none}
+details.more-ov summary::-webkit-details-marker{display:none}
+
+/* unit section */
+section.unit{scroll-margin-top:calc(var(--barH,56px) + 16px);display:grid;gap:16px}
+.uh{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:0 14px;align-items:end;border-bottom:1.5px solid var(--ink);padding-bottom:10px}
+.uicon{width:84px;height:84px;object-fit:cover;border-radius:14px;margin-bottom:-4px}
+.uh .no{font-family:var(--f-mono);font-size:40px;line-height:1;color:var(--omr);font-weight:600}
+.uh h3{font-family:var(--f-display);font-weight:900;font-size:26px;line-height:1.25;margin:0}
+.uh .meta{display:flex;flex-wrap:wrap;gap:4px 14px;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);margin-top:2px}
+.uh .meta .e{color:var(--easy)}.uh .meta .m{color:var(--mid)}.uh .meta .h{color:var(--hard)}
+.unote{font-size:14px;color:var(--ink);max-width:72ch;margin:0;padding:10px 14px;background:var(--omr-soft);border-radius:6px}
+.facts{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px}
+.fact{min-width:0}
+.fact h4{margin:0 0 6px;font-size:12px;font-weight:500;color:var(--ink-2);letter-spacing:.06em}
+.tags{display:flex;flex-wrap:wrap;gap:5px 6px}
+.tag{font-size:12.5px;padding:1px 9px;border-radius:4px;background:var(--sheet);border:1px solid var(--rule)}
+.tag i{font-style:normal;font-family:var(--f-mono);color:var(--omr);margin-left:5px}
+.ctxline{font-size:12.5px;color:var(--ink-2);margin-top:8px}
+.mini{width:auto;font-variant-numeric:tabular-nums}
+.mini th,.mini td{padding:2px 8px;font-size:12px;text-align:center}
+.mini th{color:var(--ink-2);font-weight:500}
+.mini th:first-child{text-align:left}
+.mini td b{display:inline-block;min-width:22px;border-radius:3px;font-family:var(--f-mono);font-weight:500}
+.mini td b.z{color:var(--ink-3)}
+
+/* question list */
+.qlist{display:grid;gap:14px}
+.yr{display:grid;gap:6px}
+.yr > h5{margin:0;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);font-weight:600;display:flex;align-items:center;gap:10px}
+.yr > h5::after{content:"";flex:1;height:1px;background:var(--rule)}
+article.q{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+article.q.done{border-color:color-mix(in srgb,var(--easy) 45%,var(--rule))}
+.qh{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:9px 14px;border-bottom:1px solid var(--rule)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
+.d-易 .dot{background:var(--easy)}.d-中 .dot{background:var(--mid)}.d-難 .dot{background:var(--hard)}
+.qx{font-size:12px;font-weight:700;padding:1px 8px;border-radius:4px;background:var(--paper);color:var(--ink-2);white-space:nowrap}
+.qn{font-family:var(--f-mono);font-size:13px;font-weight:600;white-space:nowrap}
+.ctx{font-size:12.5px;color:var(--omr)}
+.qm{font-size:12px;color:var(--ink-2);font-family:var(--f-mono);white-space:nowrap}
+.qd{font-size:11.5px;padding:0 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.qd.易{color:var(--easy)}.qd.中{color:var(--mid)}.qd.難{color:var(--hard)}
+.chk{margin-left:auto;font:inherit;font-size:12px;border:1px solid var(--rule);background:none;color:var(--ink-2);border-radius:999px;padding:1px 10px;cursor:pointer;white-space:nowrap}
+.chk[aria-pressed="true"]{border-color:var(--easy);color:var(--easy);font-weight:500}
+/* the exam sheet itself stays white in both themes, like real paper */
+.paper{background:#ffffff;padding:10px 12px;display:grid;gap:6px;overflow-x:auto}
+.paper img{display:block;width:100%;max-width:760px;height:auto;margin:0 auto}
+.paper .v{color:#1d2433}
+details.sol{border-top:1px solid var(--rule)}
+details.sol > summary{cursor:pointer;list-style:none;padding:9px 14px;font-size:14px;font-weight:500;color:var(--omr);display:flex;align-items:center;gap:8px}
+details.sol > summary::-webkit-details-marker{display:none}
+details.sol > summary::before{content:"";width:0;height:0;border-left:6px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent;transition:transform .15s}
+details.sol[open] > summary::before{transform:rotate(90deg)}
+details.sol > summary .hide{display:none}
+details.sol[open] > summary .hide{display:inline}
+details.sol[open] > summary .show{display:none}
+details.sol > summary:hover{background:var(--omr-soft)}
+.scb{display:grid;gap:14px;padding:14px 16px 16px;border-top:1px dashed var(--rule);background:var(--sheet);font-size:14.5px;line-height:1.8}
+.scb h6{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--omr)}
+.scb p{margin:0;max-width:72ch;overflow-wrap:anywhere}
+.sc-guide{background:var(--omr-soft);border-radius:8px;padding:10px 14px}
+.sc-topic{font-size:12.5px;color:var(--ink-2);margin-top:6px!important}
+.sc-topic .x{margin-left:4px}
+.sc-know ul{margin:0;padding-left:1.2em;display:grid;gap:2px}
+.sc-know li{font-family:var(--f-body)}
+.sc-know li::marker{color:var(--omr)}
+.sc-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sc-all{font:inherit;font-size:12px;border:1px solid var(--rule);background:none;color:var(--ink-2);border-radius:999px;padding:1px 10px;cursor:pointer}
+.sc-tip{font-size:12.5px;color:var(--ink-2);margin-bottom:6px!important}
+.sc-steps ol{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+details.step{border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+details.step[open]{background:var(--sheet);border-color:var(--ink-3)}
+details.step summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:8px 12px}
+details.step summary::-webkit-details-marker{display:none}
+.sn{font-family:var(--f-mono);font-weight:600;color:var(--sheet);background:var(--omr);border-radius:50%;width:1.6em;height:1.6em;display:inline-grid;place-items:center;font-size:12px;align-self:start;margin-top:2px}
+.sq{font-weight:500;min-width:0;overflow-wrap:anywhere}
+.sh{font-size:12px;color:var(--omr);white-space:nowrap}
+details.step[open] .sh{visibility:hidden}
+details.step > p{padding:0 12px 10px calc(12px + 1.6em + 10px)}
+details.sc-ans{border:2px solid var(--omr);border-radius:8px}
+details.sc-ans summary{list-style:none;cursor:pointer;padding:8px 12px;font-weight:700;color:var(--omr)}
+details.sc-ans summary::-webkit-details-marker{display:none}
+details.sc-ans > div{padding:0 12px 10px;display:grid;gap:6px}
+.sc-ans .ans{font-family:var(--f-mono);font-weight:700;font-size:17px;color:var(--omr)}
+.chk2 b,.sc-take b,.sc-pit b{display:inline-block;font-size:12px;letter-spacing:.08em;margin-right:8px;color:var(--ink-2)}
+.sc-take{border-left:4px solid var(--easy);padding:4px 0 4px 12px}
+.sc-take b{color:var(--easy)}
+.sc-pit{color:var(--hard)}
+.sc-pit b{color:var(--hard)}
+math{font-size:1.08em}
+#units > *,section.unit > *,.qlist,.yr,.yr > *,article.q,.scb,.scb > *,details.step,details.sc-ans,.sc-steps ol,.sc-steps li,details.fcard{min-width:0}
+section.unit{min-width:0}
+.calc > div,.fb-tex,.ansline .ans,.wrong li,.tiers li{max-width:100%;overflow-x:auto;overflow-y:hidden}
+.fboxes{display:grid;gap:8px}
+.fbox{border:1px solid var(--rule);border-left:4px solid var(--omr);border-radius:6px;padding:8px 12px;background:var(--paper);min-width:0}
+.fb-name{font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.fb-tex{font-size:16px;padding:4px 0;overflow-x:auto}
+.fb-text{margin:4px 0 0;font-size:14.5px;line-height:1.7;color:var(--ink)}
+.fb-vars{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:2px 16px;font-size:13.5px;color:var(--ink-2)}
+.fb-sym{color:var(--ink)}
+.fb-cond{font-size:13px;color:var(--ink-2);margin-top:4px}
+.fb-cond b{color:var(--mid);margin-right:6px;font-size:12px}
+.calc{display:grid;gap:4px;padding:2px 12px 10px calc(12px + 1.6em + 10px);overflow-x:auto}
+.calc > div{min-width:0}
+.why{padding:0 12px 10px calc(12px + 1.6em + 10px)!important;font-size:13.5px;color:var(--ink-2)}
+.ansline{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.ansline > b{font-size:13px;color:var(--ink-2);letter-spacing:.2em}
+.ansline .ans{font-size:17px}
+.approx{font-size:13.5px;color:var(--ink-2)}
+.wrong,.tiers{font-size:13.5px}
+.wrong > b,.tiers > b{display:block;font-size:12px;letter-spacing:.08em;color:var(--hard);margin-bottom:2px}
+.tiers > b{color:var(--easy)}
+.wrong ul,.tiers ul{margin:0;padding-left:1.1em;display:grid;gap:2px}
+.wopt,.tk{font-weight:700;margin-right:6px}
+details.fcard{border:1px solid var(--rule);border-radius:8px;background:var(--sheet)}
+details.fcard > summary{cursor:pointer;padding:9px 14px;font-weight:700;color:var(--omr);list-style:none}
+details.fcard > summary::-webkit-details-marker{display:none}
+.fc-wrap{overflow-x:auto;padding:0 12px 12px}
+table.fc{border-collapse:collapse;width:100%;font-size:13.5px}
+table.fc th{font-size:12px;font-weight:500;color:var(--ink-2);text-align:left;padding:6px 8px;border-bottom:1px solid var(--ink-3)}
+table.fc td{padding:8px;border-bottom:1px solid var(--rule);vertical-align:middle}
+.fc-n{font-weight:700;white-space:nowrap}
+.fc-t{font-size:15px;min-width:180px}
+.fc-c{color:var(--ink-2);min-width:140px}
+@media (max-width:640px){.calc,.why{padding-left:10px!important}.fc-t{min-width:150px}}
+@media (max-width:640px){.scb{padding:12px 10px 14px}details.step > p{padding:0 10px 10px}details.step summary{padding:8px 10px}}
+.qbody{display:grid;grid-template-columns:4em minmax(0,1fr);gap:8px 14px;padding:12px 16px 16px;border-top:1px dashed var(--rule);font-size:14.5px;background:var(--sheet)}
+.qbody .k{font-size:12px;font-weight:700;color:var(--ink-2);letter-spacing:.08em;padding-top:2px}
+.qbody .v{margin:0;max-width:72ch;min-width:0;overflow-wrap:anywhere}
+.qbody .ans{font-family:var(--f-mono);font-weight:600;color:var(--omr);font-size:15px}
+.qbody .pit{color:var(--hard)}
+.qbody .x{font-size:12px;color:var(--ink-2)}
+.morebtn{font:inherit;font-size:13px;justify-self:start;border:1px dashed var(--ink-3);background:none;color:var(--ink);border-radius:6px;padding:5px 14px;cursor:pointer}
+.morebtn:hover{border-color:var(--omr);color:var(--omr)}
+.empty{color:var(--ink-2);font-size:14px;padding:20px 0}
+.totop{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:9;font:inherit;font-size:12px;border:1px solid var(--rule);background:var(--sheet);color:var(--ink-2);border-radius:999px;padding:6px 12px;cursor:pointer;text-decoration:none}
+footer{grid-column:1 / -1;border-top:1px solid var(--rule);padding-top:14px;font-size:12px;color:var(--ink-2);display:grid;gap:4px}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .mast-in{grid-template-columns:minmax(0,1fr);grid-template-areas:"band" "text" "side";padding-block:16px 20px}
+  .hero-band{border-radius:12px}
+  .hero-band .art.hero{max-width:520px}
+  .mast-side{justify-items:start}
+  .layout{grid-template-columns:minmax(0,1fr);gap:20px}
+  nav.index{position:static;max-height:none;overflow:visible;padding:0}
+  .index ol{display:flex;overflow-x:auto;gap:6px;padding-bottom:6px;scrollbar-width:thin}
+  .index li{flex:0 0 auto}
+  .index a{display:flex;gap:6px;padding:4px 10px;border:1px solid var(--rule);background:var(--sheet);border-radius:999px}
+  .index .mb,.index .pt{display:none}
+  .facts{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .feats{gap:6px}
+  .feats li{padding:8px 10px}
+  .feats span{font-size:12.5px}
+  .bar{position:static;backdrop-filter:none}
+  section.unit{scroll-margin-top:12px}
+  .uicon{width:44px;height:44px}
+  .stat b{font-size:24px}
+  .bar-in{gap:6px 12px}
+  #q{width:100%}
+  .grow{display:none}
+  .qm{display:none}
+  .qh{padding:8px 10px}
+  .paper{padding:8px 6px}
+  .qbody{grid-template-columns:minmax(0,1fr);gap:2px}
+  .qbody .k{padding-top:8px}
+  .uh .no{font-size:30px}.uh h3{font-size:21px}
+}
+</style>
+
+<header class="mast"><div class="mast-in">
+  <div>
+    <div class="eyebrow">{{YEAR_RANGE}} 學年度｜學測自然｜分科物理・化學・生物</div>
+    <h1>自然考點導航</h1>
+    <p class="tagline">看懂命題趨勢，找到備考方向。</p>
+    <div class="lede">
+      <p>大考自然，不只是背過多少題，更重要的是看懂題目背後的現象、數據與觀念。</p>
+      <p>從近{{YEAR_SPAN}}年 {{PAPERS}} 份大考試卷出發，將歷屆試題依物理、化學、生物、地科單元重新整理，透過出題次數、配分比重與難度分析，幫助你掌握各單元的命題分布。從考點分析到實際練習，讓每一次複習都有方向。</p>
+    </div>
+    <ul class="feats">
+      <li><b>看考點</b><span>掌握各單元歷年出題次數與配分</span></li>
+      <li><b>找試題</b><span>依考科、科目、年度與難度篩選</span></li>
+      <li><b>練觀念</b><span>挑戰歷屆原題，搭配答案與解析</span></li>
+      <li><b>記進度</b><span>標記已練習題目，逐步完成複習</span></li>
+    </ul>
+    <p class="closing">先看懂，再練熟。讓自然準備更有方向。</p>
+  </div>
+  <div class="hero-band"><img class="art hero" src="art/hero.webp" alt="穿著實驗袍的吉祥物小卡，身邊漂浮著原子模型、DNA 與地球儀" onerror="this.parentNode.remove()"></div>
+  <div class="mast-side"><div class="stats" id="stats"></div><div class="prog" id="prog"></div></div>
+</div></header>
+
+<div class="bar" role="region" aria-label="篩選"><div class="bar-in">
+  <div class="grp"><span class="lab">考科</span><div class="seg" id="f-exam"></div></div>
+  <div class="grp"><span class="lab">科目</span><div class="seg" id="f-subj"></div></div>
+  <div class="grp"><span class="lab">年度</span><div class="seg" id="f-year"></div></div>
+  <div class="grp"><span class="lab">難度</span><div class="seg" id="f-diff"></div></div>
+  <div class="grp"><span class="lab">排序</span><div class="seg" id="f-sort"><button data-sort="points">配分</button><button data-sort="count">題數</button></div></div>
+  <button class="tog" id="ctxonly" aria-pressed="false">只看情境題</button>
+  <button class="tog" id="todo" aria-pressed="false">只看未練習</button>
+  <span class="grow"></span>
+  <label for="q" class="lab" hidden>搜尋</label><input id="q" type="search" placeholder="搜尋：光電效應、勒沙特列、遺傳…">
+  <button id="reset">重設</button>
+</div></div>
+
+<div class="layout">
+  <nav class="index" aria-label="單元目錄">
+    <h2><span>單元排行</span><span id="idx-unit">配分</span></h2>
+    <ol id="idx"></ol>
+  </nav>
+  <main>
+    <section class="overview" id="overview" aria-labelledby="ov-h">
+      <div><h2 class="sec" id="ov-h">單元出題總覽</h2><p class="note" id="ov-note"></p></div>
+      <div class="ovtable"><table><thead><tr><th>名次</th><th>單元</th><th>題數</th><th>配分</th><th>占比</th><th class="bar-cell">相對比重</th><th>{{YEAR_RANGE}} 每年配分</th></tr></thead><tbody id="ov"></tbody></table>
+      <details class="more-ov" id="ovmore"><summary>顯示其餘單元</summary><table><tbody id="ov2"></tbody></table></details></div>
+      <div class="legend">每年配分色階 <span class="heat"><span class="h0"></span><span class="h1"></span><span class="h2"></span><span class="h3"></span><span class="h4"></span></span> 少 → 多，格內數字為該年配分</div>
+    </section>
+    <div id="units" style="display:grid;gap:52px"></div>
+  </main>
+  <footer>
+    <div>資料來源：大考中心歷年試卷、參考答案、非選擇題評分原則與分科答對率；翰林、龍騰解析供核對。解析為整理撰寫，非大考中心官方解答。學測未公布答對率，數A、數B 難度依出版社評語判斷；分科多選題的答對率為得分率。</div>
+    <div><a href="https://www.ceec.edu.tw/xmfile?xsmsid=0J052424829869345634" target="_blank" rel="noopener">大考中心學測試題</a> · <a href="https://www.ceec.edu.tw/xmfile?xsmsid=0J052427633128416650" target="_blank" rel="noopener">大考中心分科試題</a></div>
+  </footer>
+</div>
+<a class="totop" href="#overview">回到總覽 ↑</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" defer></script>
+<script>
+const DATA = /*DATA*/[];
+const UNITS = /*UNITS*/{};
+const NOTES = /*NOTES*/{};
+const IMGS = /*IMGS*/{};
+const ART = /*ART*/[];
+const CARDS = /*CARDS*/{};
+const EXAMS=["學測自然","分科物理","分科化學","分科生物"], SUBJ={P:"物理",C:"化學",L:"生物",E:"地科"}, SUBJS=Object.keys(SUBJ).map(k=>SUBJ[k]), subjOf=d=>SUBJ[d.unit[0]], YEARS=[...new Set(DATA.map(d=>d.year))].sort((a,b)=>a-b), DIFFS=["易","中","難"];
+const SHOW=6, TOPN=8;
+const fresh=()=>({exam:new Set(EXAMS),subj:new Set(SUBJS),year:new Set(YEARS),diff:new Set(DIFFS),sort:"points",ctx:false,todo:false,q:""});
+let state=fresh();
+const expanded=new Set();
+try{const s=JSON.parse(localStorage.getItem("sci-state")||"null");if(s){state.exam=new Set(s.exam);if(s.subj)state.subj=new Set(s.subj);state.year=new Set(s.year);state.diff=new Set(s.diff);state.sort=s.sort||"points";state.ctx=!!s.ctx}}catch(e){}
+function save(){try{localStorage.setItem("sci-state",JSON.stringify({exam:[...state.exam],subj:[...state.subj],year:[...state.year],diff:[...state.diff],sort:state.sort,ctx:state.ctx}))}catch(e){}}
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function seg(id,vals,key,fmt){const el=document.getElementById(id);el.innerHTML="";vals.forEach(v=>{const b=document.createElement("button");b.textContent=fmt?fmt(v):v;b.dataset.v=v;b.onclick=()=>{const set=state[key];
+  if(set.size===vals.length){set.clear();set.add(v)}else if(set.has(v)){set.delete(v);if(!set.size)vals.forEach(x=>set.add(x))}else set.add(v);sync();render()};el.appendChild(b)})}
+seg("f-exam",EXAMS,"exam");seg("f-subj",SUBJS,"subj");seg("f-year",YEARS,"year",v=>String(v));seg("f-diff",DIFFS,"diff");
+document.querySelectorAll("#f-sort button").forEach(b=>b.onclick=()=>{state.sort=b.dataset.sort;sync();render()});
+document.getElementById("ctxonly").onclick=()=>{state.ctx=!state.ctx;sync();render()};
+document.getElementById("todo").onclick=()=>{state.todo=!state.todo;sync();render()};
+document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value.trim();render()});
+document.getElementById("reset").onclick=()=>{state=fresh();document.getElementById("q").value="";expanded.clear();sync();render()};
+function sync(){
+  [["f-exam","exam",EXAMS],["f-subj","subj",SUBJS],["f-year","year",YEARS],["f-diff","diff",DIFFS]].forEach(([id,k,vals])=>{const all=state[k].size===vals.length;document.querySelectorAll(`#${id} button`).forEach(b=>{const v=k==="year"?+b.dataset.v:b.dataset.v;b.setAttribute("aria-pressed",!all&&state[k].has(v))})});
+  document.querySelectorAll("#f-sort button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.sort===state.sort));
+  document.getElementById("ctxonly").setAttribute("aria-pressed",state.ctx);
+  document.getElementById("todo").setAttribute("aria-pressed",state.todo);
+  document.getElementById("idx-unit").textContent=state.sort==="points"?"配分":"題數";
+}
+function filtered(){const q=state.q;return DATA.filter(d=>state.exam.has(d.exam)&&state.subj.has(subjOf(d))&&state.year.has(d.year)&&state.diff.has(d.difficulty)&&(!state.ctx||d.context)&&(!state.todo||!DONE.has(qid(d)))&&(!q||[d.topic,d.stem,d.solution,d.context,d.pitfall,UNITS[d.unit],d.detail?d.detail.guide+" "+d.detail.takeaway:""].join(" ").includes(q)))}
+function heatClass(v,max){if(!v)return"h0";const r=v/max;return r>.75?"h4":r>.5?"h3":r>.25?"h2":"h1"}
+const examOrder={"學測自然":0,"分科物理":1,"分科化學":2,"分科生物":3};
+let LIST=[];
+function render(){save();
+  const rows=filtered();const totalPts=rows.reduce((s,d)=>s+(+d.points||0),0);
+  document.getElementById("stats").innerHTML=`<div class="stat"><b>${rows.length}</b><span>題</span></div><div class="stat"><b>${totalPts}</b><span>分</span></div><div class="stat"><b>${new Set(rows.map(d=>d.exam+d.year)).size}</b><span>份試卷</span></div>`;
+  const by={};rows.forEach(d=>{(by[d.unit]??={unit:d.unit,count:0,points:0,yr:{},qs:[]});const u=by[d.unit];u.count++;u.points+=+d.points||0;u.yr[d.year]=(u.yr[d.year]||0)+(+d.points||0);u.qs.push(d)});
+  LIST=Object.values(by).sort((a,b)=>state.sort==="points"?b.points-a.points||b.count-a.count:b.count-a.count||b.points-a.points);
+  const val=u=>state.sort==="points"?u.points:u.count;
+  const maxV=Math.max(1,...LIST.map(val)), maxY=Math.max(1,...LIST.flatMap(u=>Object.values(u.yr)));
+  document.getElementById("idx").innerHTML=LIST.map((u,i)=>`<li><a href="#${u.unit}" data-u="${u.unit}"><span class="rk">${String(i+1).padStart(2,"0")}</span><span class="nm">${esc(UNITS[u.unit])}</span><span class="pt">${val(u)}</span><span class="mb"><i style="width:${val(u)/maxV*100}%"></i></span></a></li>`).join("")||'<li class="note">沒有符合的單元</li>';
+  const parts=[];if(state.exam.size<EXAMS.length)parts.push([...state.exam].join("、"));if(state.subj.size<SUBJS.length)parts.push([...state.subj].join("、"));if(state.year.size<YEARS.length)parts.push([...state.year].sort().join("、")+" 年");if(state.diff.size<3)parts.push([...state.diff].join("、")+"題");if(state.ctx)parts.push("情境題");if(state.q)parts.push(`含「${state.q}」`);
+  document.getElementById("ov-note").textContent=(parts.length?"篩選："+parts.join("；")+"。":"全部考科與年度。")+`共 ${LIST.length} 個單元。`;
+  const tr=(u,i)=>`<tr><td class="rk">${i+1}</td><td class="unit"><a href="#${u.unit}">${esc(UNITS[u.unit])}</a></td><td class="num">${u.count}</td><td class="num">${u.points}</td><td class="num">${totalPts?(u.points/totalPts*100).toFixed(1):0}%</td><td class="bar-cell"><div class="hb" style="width:${val(u)/maxV*100}%"></div></td><td><span class="heat">${YEARS.map(y=>`<span class="${state.year.has(y)?heatClass(u.yr[y]||0,maxY):"h0"}" title="${y} 年 ${u.yr[y]||0} 分">${u.yr[y]||""}</span>`).join("")}</span></td></tr>`;
+  document.getElementById("ov").innerHTML=LIST.slice(0,TOPN).map(tr).join("")||`<tr><td colspan="7" class="empty">沒有符合篩選的題目，試試按「重設」。</td></tr>`;
+  document.getElementById("ov2").innerHTML=LIST.slice(TOPN).map((u,i)=>tr(u,i+TOPN)).join("");
+  const more=document.getElementById("ovmore");more.hidden=LIST.length<=TOPN;more.querySelector("summary").textContent=more.open?"收合":`顯示其餘 ${Math.max(0,LIST.length-TOPN)} 個單元`;
+  document.getElementById("units").innerHTML=LIST.map(unitHTML).join("");
+  observe();updateProgress();
+}
+document.getElementById("ovmore").addEventListener("toggle",e=>{e.target.querySelector("summary").textContent=e.target.open?"收合":`顯示其餘 ${Math.max(0,LIST.length-TOPN)} 個單元`});
+function unitHTML(u,i){
+  const topics={};u.qs.forEach(d=>{topics[d.topic]=(topics[d.topic]||0)+1});
+  const topT=Object.entries(topics).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const ctxs=[...new Set(u.qs.filter(d=>d.context).map(d=>d.context))];
+  const exs=EXAMS.filter(e=>state.exam.has(e)&&u.qs.some(d=>d.exam===e));
+  const grid=exs.map(e=>`<tr><th>${e}</th>${YEARS.map(y=>{const n=u.qs.filter(d=>d.exam===e&&d.year===y).length;return `<td><b class="${n?"":"z"}">${n||"·"}</b></td>`}).join("")}</tr>`).join("");
+  const dc={易:0,中:0,難:0};u.qs.forEach(d=>dc[d.difficulty]++);
+  const qs=u.qs.slice().sort((a,b)=>b.year-a.year||examOrder[a.exam]-examOrder[b.exam]||parseInt(a.no)-parseInt(b.no));
+  const open=expanded.has(u.unit)||!!state.q;
+  const shown=open?qs:qs.slice(0,SHOW);
+  const byYr=[];shown.forEach(d=>{let g=byYr.at(-1);if(!g||g.y!==d.year){g={y:d.year,qs:[]};byYr.push(g)}g.qs.push(d)});
+  const note=NOTES[u.unit]?`<p class="unote">${esc(NOTES[u.unit])}</p>`:"";
+  return `<section class="unit" id="${u.unit}">
+  <div class="uh"><span class="no">${String(i+1).padStart(2,"0")}</span><div><h3>${esc(UNITS[u.unit])}</h3><div class="meta"><span>${u.count} 題</span><span>${u.points} 分</span><span class="e">易 ${dc.易}</span><span class="m">中 ${dc.中}</span><span class="h">難 ${dc.難}</span></div></div>${ART.includes(u.unit)?`<img class="art uicon" src="art/${u.unit}.webp" alt="" loading="lazy" onerror="this.remove()">`:""}</div>
+  ${note}
+  <div class="facts">
+    <div class="fact"><h4>最常考的小主題</h4><div class="tags">${topT.map(([t,n])=>`<span class="tag">${esc(t)}${n>1?`<i>×${n}</i>`:""}</span>`).join("")}</div>${ctxs.length?`<div class="ctxline">情境取材：${ctxs.slice(0,10).map(esc).join("、")}</div>`:""}</div>
+    <div class="fact"><h4>題數分布（考科 × 年度）</h4><table class="mini"><tr><th></th>${YEARS.map(y=>`<th>${y}</th>`).join("")}</tr>${grid}</table></div>
+  </div>
+  ${(CARDS[u.unit]||[]).length?`<details class="fcard"><summary>本單元公式卡（${CARDS[u.unit].length} 條）</summary><div class="fc-wrap"><table class="fc"><thead><tr><th>名稱</th><th>公式</th><th>條件或提醒</th></tr></thead><tbody>${CARDS[u.unit].map(c=>`<tr><td class="fc-n">${esc(c.name)}</td><td class="fc-t">$\\displaystyle ${esc(c.tex)}$</td><td class="fc-c">${esc(c.note||"")}</td></tr>`).join("")}</tbody></table></div></details>`:""}
+  <div class="qlist">${byYr.map(g=>`<div class="yr"><h5>${g.y} 年</h5>${g.qs.map(qCard).join("")}</div>`).join("")}
+  ${qs.length>SHOW&&!state.q?`<button class="morebtn" data-more="${u.unit}">${open?"收合，只看最近 "+SHOW+" 題":`顯示全部 ${qs.length} 題（還有 ${qs.length-SHOW} 題）`}</button>`:""}</div>
+  </section>`}
+const qid=d=>`${d.exam}-${d.year}-${d.no}`;
+let DONE=new Set();try{DONE=new Set(JSON.parse(localStorage.getItem("qmap-done")||"[]"))}catch(e){}
+function saveDone(){try{localStorage.setItem("qmap-done",JSON.stringify([...DONE]))}catch(e){}}
+function qCard(d){const sec=(d.secondary||[]).map(s=>UNITS[s]||s).join("、");const id=qid(d);
+  const imgs=(IMGS[`${d.exam}|${d.year}|${parseInt(d.no)}`]||[]).filter(Boolean);
+  const pic=imgs.length?imgs.map((src,k)=>`<img src="q/${src}" alt="${d.year} ${d.exam} 第${esc(d.no)}題${src.includes("-g")?"題組說明":"題目"}" loading="lazy" decoding="async">`).join(""):`<p class="v">${esc(d.stem)}</p>`;
+  return `<article class="q d-${d.difficulty}${DONE.has(id)?" done":""}" data-id="${esc(id)}">
+  <header class="qh"><span class="qx">${d.year}・${d.exam}</span><span class="qn"><span class="dot"></span>第${esc(d.no)}題</span><span class="qm">${esc(d.type)}・${d.points}分${d.rate!=null?`・答對率 ${Math.round(d.rate*100)}%`:""}</span><span class="qd ${d.difficulty}">${d.difficulty}</span>
+  <button class="chk" data-done="${esc(id)}" aria-pressed="${DONE.has(id)}" title="標記為已練習">${DONE.has(id)?"✓ 練習過了":"標記已練習"}</button></header>
+  <div class="paper">${pic}</div>
+  ${d.detail?scaffold(d,sec):`<details class="sol"><summary><span class="show">看答案與解析</span><span class="hide">收起解析</span></summary>
+  <div class="qbody"><span class="k">答案</span><p class="v ans">${esc(d.answer)}</p><span class="k">考點</span><p class="v">${esc(d.topic)}${d.context?`<span class="ctx">・${esc(d.context)}</span>`:""}</p><span class="k">解析</span><p class="v">${esc(d.solution)}</p>${d.pitfall?`<span class="k">易錯</span><p class="v pit">${esc(d.pitfall)}</p>`:""}${sec?`<span class="k">跨單元</span><p class="v x">${esc(sec)}</p>`:""}</div></details>`}</article>`}
+/* scaffolded solution: 破題 → 先備 → 步驟（逐步揭開）→ 答案 → 驗算 → 心法 */
+function fbox(f){return `<div class="fbox"><div class="fb-name">${esc(f.name)}</div>${f.tex?`<div class="fb-tex">$\\displaystyle ${esc(f.tex)}$</div>`:""}${f.text?`<p class="fb-text">${esc(f.text)}</p>`:""}
+  ${(f.vars||[]).length?`<ul class="fb-vars">${f.vars.map(v=>`<li><span class="fb-sym">$${esc(v[0])}$</span>＝${esc(v[1])}</li>`).join("")}</ul>`:""}
+  ${f.cond?`<div class="fb-cond"><b>條件</b>${esc(f.cond)}</div>`:""}</div>`}
+function scaffold(d,sec){const t=d.detail;const steps=t.steps||[];const v2=!!t.idea;
+  const stepBody=s=>v2?`<div class="calc">${(s.calc||[]).map(l=>`<div>${esc(l)}</div>`).join("")}</div>${s.why?`<p class="why">${esc(s.why)}</p>`:""}`:`<p>${esc(s.a)}</p>`;
+  return `<details class="sol scaf"><summary><span class="show">開始解題引導</span><span class="hide">收起解題引導</span></summary>
+  <div class="scb">
+    <section class="sc-guide"><h6>想法</h6><p>${esc(v2?t.idea:t.guide)}</p>
+      <p class="sc-topic">考點：${esc(d.topic)}${d.context?`<span class="ctx">・${esc(d.context)}</span>`:""}${sec?`<span class="x">｜跨單元：${esc(sec)}</span>`:""}</p></section>
+    ${v2&&(t.formulas||[]).length?`<section class="sc-know"><h6>${t.formulas.some(f=>f.tex)?"會用到的公式":"關鍵觀念"}</h6><div class="fboxes">${t.formulas.map(fbox).join("")}</div></section>`
+      :(t.know||[]).length?`<section class="sc-know"><h6>先備觀念</h6><ul>${t.know.map(k=>`<li>${esc(k)}</li>`).join("")}</ul></section>`:""}
+    <section class="sc-steps"><div class="sc-head"><h6>一步一步來</h6><button type="button" class="sc-all" data-all>全部展開</button></div>
+      <p class="sc-tip">先看每一步的提問，自己想一下，再點開看做法。</p>
+      <ol>${steps.map((s,i)=>`<li><details class="step"><summary><span class="sn">${i+1}</span><span class="sq">${esc(s.q)}</span><span class="sh">看做法</span></summary>${stepBody(s)}</details></li>`).join("")}</ol></section>
+    <details class="sc-ans"><summary>算完了，看答案</summary><div>
+      <p class="ansline"><b>答</b><span class="ans">${esc(v2?t.answer:d.answer)}</span>${t.approx?`<span class="approx">${esc(t.approx)}</span>`:""}</p>
+      ${t.check?`<p class="chk2"><b>驗算</b>${esc(t.check)}</p>`:""}
+      ${(t.wrong||[]).length?`<div class="wrong"><b>常見錯誤</b><ul>${t.wrong.map(w=>`<li><span class="wopt">${esc(w.opt)}</span>${esc(w.how)}</li>`).join("")}</ul></div>`:""}
+      ${(t.tiers||[]).length?`<div class="tiers"><b>評分重點</b><ul>${t.tiers.map(x=>`<li><span class="tk">${esc(x[0])}</span>${esc(x[1])}</li>`).join("")}</ul></div>`:""}
+    </div></details>
+    ${t.takeaway?`<p class="sc-take"><b>一句話心法</b>${esc(t.takeaway)}</p>`:""}
+    ${d.pitfall&&!(t.wrong||[]).length?`<p class="sc-pit"><b>易錯</b>${esc(d.pitfall)}</p>`:""}
+  </div></details>`}
+/* KaTeX: render $…$ as MathML (no stylesheet needed) inside an element, once */
+function typeset(el){if(!el||el.dataset.tex==="1")return;if(!window.renderMathInElement){el.dataset.texWait="1";return}
+  try{renderMathInElement(el,{delimiters:[{left:"$",right:"$",display:false}],output:"mathml",throwOnError:false,strict:false,ignoredClasses:["notex"]})}catch(e){}
+  el.dataset.tex="1"}
+document.addEventListener("toggle",e=>{const d=e.target;if(d.open&&(d.classList.contains("scaf")||d.classList.contains("fcard")))typeset(d)},true);
+window.addEventListener("load",()=>document.querySelectorAll("[data-tex-wait='1']").forEach(el=>{delete el.dataset.texWait;typeset(el)}));
+document.getElementById("units").addEventListener("click",e=>{const b=e.target.closest("[data-all]");if(!b)return;
+  const box=b.closest(".sc-steps");const steps=[...box.querySelectorAll("details.step")];const open=steps.some(s=>!s.open);
+  steps.forEach(s=>s.open=open);b.textContent=open?"全部收起":"全部展開"});
+document.getElementById("units").addEventListener("click",e=>{const b=e.target.closest("[data-done]");if(!b)return;const id=b.dataset.done;DONE.has(id)?DONE.delete(id):DONE.add(id);saveDone();
+  const on=DONE.has(id);b.setAttribute("aria-pressed",on);b.textContent=on?"✓ 練習過了":"標記已練習";b.closest("article.q").classList.toggle("done",on);updateProgress()});
+function updateProgress(){const el=document.getElementById("prog");if(!el)return;const n=DATA.filter(d=>DONE.has(qid(d))).length;el.textContent=n?`已練習 ${n} / ${DATA.length} 題`:"";}
+document.getElementById("units").addEventListener("click",e=>{const b=e.target.closest("[data-more]");if(!b)return;const u=b.dataset.more;const was=expanded.has(u);was?expanded.delete(u):expanded.add(u);render();if(was)document.getElementById(u)?.scrollIntoView({block:"start"})});
+let io;
+function observe(){if(io)io.disconnect();if(!("IntersectionObserver" in window))return;
+  io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){document.querySelectorAll("#idx a").forEach(a=>a.classList.toggle("on",a.dataset.u===en.target.id))}})},{rootMargin:"-30% 0px -60% 0px"});
+  document.querySelectorAll("section.unit").forEach(s=>io.observe(s))}
+function barH(){const b=document.querySelector(".bar");if(b)document.documentElement.style.setProperty("--barH",b.offsetHeight+"px")}
+window.addEventListener("resize",barH);
+sync();render();barH();
+</script>

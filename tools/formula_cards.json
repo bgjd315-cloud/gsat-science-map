@@ -1,0 +1,973 @@
+{
+ "P01": [
+  {
+   "name": "平均速度與平均速率",
+   "tex": "\\bar{v}=\\dfrac{\\Delta x}{\\Delta t},\\quad \\text{平均速率}=\\dfrac{\\text{路徑長}}{\\Delta t}",
+   "note": "必背；速度看位移、速率看路徑長，物體折返時兩者不同。"
+  },
+  {
+   "name": "等加速度：速度",
+   "tex": "v=v_0+at",
+   "note": "必背；加速度固定時才成立，減速時 $a$ 以負值代入。"
+  },
+  {
+   "name": "等加速度：位移",
+   "tex": "\\Delta x=v_0t+\\dfrac{1}{2}at^2",
+   "note": "必背；由靜止出發時簡化為 $\\Delta x=\\dfrac{1}{2}at^2$。"
+  },
+  {
+   "name": "等加速度：不含時間",
+   "tex": "v^2=v_0^2+2a\\,\\Delta x",
+   "note": "必背；題目沒給時間時最好用，$\\Delta x$ 是位移不是路徑長。"
+  },
+  {
+   "name": "$v$-$t$ 圖",
+   "tex": "a=\\text{斜率}=\\dfrac{\\Delta v}{\\Delta t},\\quad \\Delta x=\\text{圖下面積}",
+   "note": "必背；時間軸下方的面積代表負位移，求路徑長時要取絕對值相加。"
+  },
+  {
+   "name": "鉛直上拋",
+   "tex": "t_{\\text{空}}=\\dfrac{2v_0}{g},\\quad H=\\dfrac{v_0^2}{2g}",
+   "note": "要會推；令最高點速度為 $0$，由 $v^2=v_0^2-2gH$ 推得，忽略空氣阻力。"
+  },
+  {
+   "name": "水平拋射",
+   "tex": "t=\\sqrt{\\dfrac{2h}{g}},\\quad R=v_0t",
+   "note": "要會推；水平等速、鉛直自由落體，飛行時間只由高度 $h$ 決定，與 $v_0$ 無關。"
+  },
+  {
+   "name": "相對速度",
+   "tex": "\\vec{v}_{AB}=\\vec{v}_A-\\vec{v}_B",
+   "note": "必背；$\\vec{v}_{AB}$ 是 $B$ 看 $A$ 的速度，同向相減、反向相加。"
+  },
+  {
+   "name": "測量不確定度",
+   "tex": "u_A=\\dfrac{s}{\\sqrt{N}},\\quad u_B=\\dfrac{\\Delta}{\\sqrt{12}},\\quad u_C=\\sqrt{u_A^2+u_B^2}",
+   "note": "要會推；$s$ 為樣本標準差，$u_B$ 適用於儀器誤差為均勻分布、最小刻度為 $\\Delta$ 的情形。"
+  }
+ ],
+ "P02": [
+  {
+   "name": "牛頓第二運動定律",
+   "tex": "\\sum\\vec{F}=m\\vec{a}",
+   "note": "必背；合力與加速度同方向，但不一定與速度同方向。"
+  },
+  {
+   "name": "靜力平衡（移動）",
+   "tex": "\\sum\\vec{F}=0",
+   "note": "必背；靜止或等速度運動都滿足，等速度不代表不受力。"
+  },
+  {
+   "name": "摩擦力",
+   "tex": "f_k=\\mu_kN,\\quad f_s\\le\\mu_sN",
+   "note": "必背；靜摩擦力大小由平衡條件決定，$\\mu_sN$ 只是最大值；$N$ 是正向力，不一定等於 $mg$。"
+  },
+  {
+   "name": "粗糙斜面下滑",
+   "tex": "a=g\\sin\\theta-\\mu_kg\\cos\\theta",
+   "note": "要會推；沿斜面分解重力，正向力 $N=mg\\cos\\theta$；物體上滑時摩擦力改為與運動反向。"
+  },
+  {
+   "name": "力矩",
+   "tex": "\\tau=rF\\sin\\theta",
+   "note": "必背；$r$ 為轉軸到施力點的距離，$\\theta$ 為 $\\vec{r}$ 與 $\\vec{F}$ 的夾角，也可用力臂乘力。"
+  },
+  {
+   "name": "轉動平衡",
+   "tex": "\\sum\\vec{F}=0,\\quad \\sum\\tau=0",
+   "note": "必背；靜力平衡要同時滿足兩式，選未知力多的點當轉軸最省事。"
+  },
+  {
+   "name": "終端速度",
+   "tex": "mg=f_{\\text{阻}}",
+   "note": "必背；阻力隨速率增大，達終端速度時加速度為 $0$。"
+  },
+  {
+   "name": "液體壓力",
+   "tex": "P=P_0+\\rho gh",
+   "note": "必背；$h$ 為液面下深度，同一靜止液體中同深度壓力相等。"
+  }
+ ],
+ "P03": [
+  {
+   "name": "動量與衝量",
+   "tex": "\\vec{p}=m\\vec{v},\\quad \\vec{J}=\\vec{F}\\Delta t=\\Delta\\vec{p}",
+   "note": "必背；動量是向量，反彈時 $\\Delta p=m(v+v')$；$F$-$t$ 圖下面積為衝量。"
+  },
+  {
+   "name": "動量守恆",
+   "tex": "m_1v_1+m_2v_2=m_1v_1'+m_2v_2'",
+   "note": "必背；系統所受外力合力為 $0$，或碰撞時間極短外力可忽略時才成立。"
+  },
+  {
+   "name": "完全非彈性碰撞",
+   "tex": "m_1v_1+m_2v_2=(m_1+m_2)v'",
+   "note": "必背；碰後黏在一起，動量守恆但動能損失最多。"
+  },
+  {
+   "name": "一維彈性碰撞（靶球靜止）",
+   "tex": "v_1'=\\dfrac{m_1-m_2}{m_1+m_2}u,\\quad v_2'=\\dfrac{2m_1}{m_1+m_2}u",
+   "note": "要會推；由動量守恆與動能守恆聯立；質量相等時兩球交換速度。"
+  },
+  {
+   "name": "恢復係數",
+   "tex": "e=\\dfrac{|v_2'-v_1'|}{|v_1-v_2|}",
+   "note": "必背；分離速率除以接近速率，彈性碰撞 $e=1$，完全非彈性碰撞 $e=0$。"
+  },
+  {
+   "name": "質心速度",
+   "tex": "v_{\\text{cm}}=\\dfrac{m_1v_1+m_2v_2}{m_1+m_2}",
+   "note": "必背；外力合力為 $0$ 時質心速度不變，碰撞前後都一樣。"
+  },
+  {
+   "name": "動量與動能",
+   "tex": "K=\\dfrac{p^2}{2m}",
+   "note": "要會推；由 $K=\\dfrac{1}{2}mv^2$ 與 $p=mv$ 消去 $v$；動量相同時質量小的動能大。"
+  }
+ ],
+ "P04": [
+  {
+   "name": "功",
+   "tex": "W=Fs\\cos\\theta",
+   "note": "必背；$\\theta$ 是力與位移的夾角，力與位移垂直時不作功。"
+  },
+  {
+   "name": "功能定理",
+   "tex": "W_{\\text{合}}=\\Delta K=\\dfrac{1}{2}mv^2-\\dfrac{1}{2}mv_0^2",
+   "note": "必背；要用合力作的功，摩擦力作負功使動能減少。"
+  },
+  {
+   "name": "重力位能",
+   "tex": "U=mgh",
+   "note": "必背；$h$ 從自選的零位面量起，真正有意義的是位能差 $\\Delta U=mg\\Delta h$。"
+  },
+  {
+   "name": "彈力位能",
+   "tex": "U=\\dfrac{1}{2}kx^2",
+   "note": "必背；$x$ 是形變量，不是彈簧長度。"
+  },
+  {
+   "name": "力學能守恆",
+   "tex": "K_1+U_1=K_2+U_2",
+   "note": "必背；只有重力或彈力作功時成立，有摩擦時減少的力學能轉為熱。"
+  },
+  {
+   "name": "功率",
+   "tex": "P=\\dfrac{W}{t}=Fv",
+   "note": "必背；$Fv$ 中的 $F$ 要與速度同方向，$1\\ \\text{W}=1\\ \\text{J/s}$。"
+  },
+  {
+   "name": "電能與度",
+   "tex": "E=Pt,\\quad 1\\ \\text{kWh}=3.6\\times10^{6}\\ \\text{J}",
+   "note": "必背；$1$ 度電就是 $1\\ \\text{kWh}$，算度數時功率用 $\\text{kW}$、時間用小時。"
+  },
+  {
+   "name": "風力發電功率",
+   "tex": "P\\propto v^3",
+   "note": "要會推；每秒通過的空氣質量正比於 $v$，每單位質量的動能正比於 $v^2$。"
+  }
+ ],
+ "P05": [
+  {
+   "name": "等速圓周運動",
+   "tex": "v=r\\omega=\\dfrac{2\\pi r}{T}",
+   "note": "必背；速率固定但方向一直改變，所以仍有加速度。"
+  },
+  {
+   "name": "向心力",
+   "tex": "F_c=m\\dfrac{v^2}{r}=mr\\omega^2",
+   "note": "必背；向心力不是另一種力，而是指向圓心的合力，受力圖不要多畫一個。"
+  },
+  {
+   "name": "萬有引力定律",
+   "tex": "F=\\dfrac{GMm}{r^2}",
+   "note": "必背；$r$ 為兩質心距離，在行星表面取行星半徑，在軌道上要加高度。"
+  },
+  {
+   "name": "表面重力加速度",
+   "tex": "g=\\dfrac{GM}{R^2}",
+   "note": "要會推；由 $mg=\\dfrac{GMm}{R^2}$ 推得，與物體質量無關。"
+  },
+  {
+   "name": "圓軌道衛星速率",
+   "tex": "v=\\sqrt{\\dfrac{GM}{r}}",
+   "note": "要會推；由 $\\dfrac{GMm}{r^2}=\\dfrac{mv^2}{r}$ 推得，與衛星質量無關，軌道越高越慢。"
+  },
+  {
+   "name": "克卜勒第三定律",
+   "tex": "\\dfrac{r^3}{T^2}=\\dfrac{GM}{4\\pi^2}",
+   "note": "要會推；由萬有引力提供向心力推得，只有繞同一中心天體時比值才相同，可用來求中心天體質量。"
+  },
+  {
+   "name": "重力位能與脫離速率",
+   "tex": "U=-\\dfrac{GMm}{r},\\quad v_{\\text{esc}}=\\sqrt{\\dfrac{2GM}{R}}",
+   "note": "要會推；以無窮遠為零位能，令 $\\dfrac{1}{2}mv^2-\\dfrac{GMm}{R}=0$ 即得脫離速率。"
+  },
+  {
+   "name": "單擺週期",
+   "tex": "T=2\\pi\\sqrt{\\dfrac{L}{g}}",
+   "note": "必背；小角度擺動才成立，週期與擺錘質量、振幅無關。"
+  },
+  {
+   "name": "彈簧振子週期",
+   "tex": "T=2\\pi\\sqrt{\\dfrac{m}{k}}",
+   "note": "必背；與 $g$ 無關，鉛直懸掛或放在月球上週期都不變。"
+  }
+ ],
+ "P06": [
+  {
+   "name": "熱量與比熱",
+   "tex": "Q=mc\\Delta T",
+   "note": "必背；只適用於沒有相變的升降溫，相變時溫度不變不能用此式。"
+  },
+  {
+   "name": "潛熱",
+   "tex": "Q=mL",
+   "note": "必背；熔化、汽化時吸熱但溫度不變，$L$ 為每單位質量所需熱量。"
+  },
+  {
+   "name": "熱平衡",
+   "tex": "Q_{\\text{放}}=Q_{\\text{吸}}",
+   "note": "必背；熱散失不計時成立，兩邊都取正值，不要讓正負號重複。"
+  },
+  {
+   "name": "理想氣體方程式",
+   "tex": "PV=nRT",
+   "note": "必背；$T$ 一定要用絕對溫度 $T=t+273$。"
+  },
+  {
+   "name": "分子平均動能",
+   "tex": "\\overline{E_k}=\\dfrac{3}{2}kT",
+   "note": "必背；只與絕對溫度有關，同溫下不同氣體分子的平均動能相同。"
+  },
+  {
+   "name": "方均根速率",
+   "tex": "v_{\\text{rms}}=\\sqrt{\\dfrac{3RT}{M}}",
+   "note": "要會推；由 $\\dfrac{1}{2}mv^2=\\dfrac{3}{2}kT$ 推得，$M$ 要用 $\\text{kg/mol}$，同溫下分子量小者較快。"
+  },
+  {
+   "name": "氣體動力論壓力",
+   "tex": "PV=\\dfrac{1}{3}Nm\\overline{v^2}",
+   "note": "要會推；由分子撞牆的動量變化推得，與 $PV=nRT$ 比較即得平均動能和溫度的關係。"
+  },
+  {
+   "name": "單原子理想氣體內能",
+   "tex": "U=\\dfrac{3}{2}nRT=\\dfrac{3}{2}PV",
+   "note": "必背；只適用單原子分子，理想氣體內能只由溫度決定。"
+  },
+  {
+   "name": "熱力學第一定律",
+   "tex": "\\Delta U=Q-W",
+   "note": "必背；$W$ 是氣體對外作的功，定壓時 $W=P\\Delta V$，吸熱 $Q$ 取正。"
+  }
+ ],
+ "P07": [
+  {
+   "name": "頻率與週期",
+   "tex": "f=\\dfrac{1}{T}",
+   "note": "必背；頻率單位 $\\text{Hz}$ 就是每秒振動次數。"
+  },
+  {
+   "name": "波速關係",
+   "tex": "v=f\\lambda",
+   "note": "必背；波速由介質決定，頻率由波源決定，進入新介質時頻率不變。"
+  },
+  {
+   "name": "弦上波速",
+   "tex": "v=\\sqrt{\\dfrac{F}{\\mu}}",
+   "note": "必背；$F$ 為弦的張力，$\\mu$ 為每單位長度的質量。"
+  },
+  {
+   "name": "兩端固定弦的駐波",
+   "tex": "f_n=\\dfrac{nv}{2L},\\quad n=1,2,3,\\ldots",
+   "note": "必背；$n=1$ 為基音，兩端都是節點，相鄰節點相距半個波長。"
+  },
+  {
+   "name": "空氣柱的駐波",
+   "tex": "\\text{開管}:\\ f_n=\\dfrac{nv}{2L},\\quad \\text{閉管}:\\ f_n=\\dfrac{(2n-1)v}{4L}",
+   "note": "必背；開口端為腹點、封閉端為節點，閉管只有奇數倍頻。"
+  },
+  {
+   "name": "兩波源干涉",
+   "tex": "|r_1-r_2|=n\\lambda\\ (\\text{腹線}),\\quad |r_1-r_2|=\\left(n-\\dfrac{1}{2}\\right)\\lambda\\ (\\text{節線})",
+   "note": "必背；兩波源同相時才成立，反相時腹線與節線條件對調。"
+  },
+  {
+   "name": "拍頻",
+   "tex": "f_{\\text{拍}}=|f_1-f_2|",
+   "note": "必背；兩頻率相近的聲波疊加，每秒聲音強弱變化的次數。"
+  },
+  {
+   "name": "都卜勒效應",
+   "tex": "f'=\\dfrac{v+v_o}{v-v_s}f",
+   "note": "要會推；觀察者以 $v_o$ 接近、波源以 $v_s$ 接近時取此號，遠離則變號；學測多考定性：接近變高、遠離變低。"
+  },
+  {
+   "name": "空氣中的聲速",
+   "tex": "v\\approx331+0.6\\,t\\ (\\text{m/s})",
+   "note": "必背；$t$ 為攝氏溫度，溫度越高聲速越快。"
+  }
+ ],
+ "P08": [
+  {
+   "name": "反射定律",
+   "tex": "\\theta_i=\\theta_r",
+   "note": "必背；入射角與反射角都從法線量起，不是從界面量起。"
+  },
+  {
+   "name": "折射率",
+   "tex": "n=\\dfrac{c}{v},\\quad \\lambda=\\dfrac{\\lambda_0}{n}",
+   "note": "必背；光進入介質時頻率不變，速率與波長都變為真空中的 $\\dfrac{1}{n}$。"
+  },
+  {
+   "name": "司乃耳定律",
+   "tex": "n_1\\sin\\theta_1=n_2\\sin\\theta_2",
+   "note": "必背；也可寫成 $\\dfrac{\\sin\\theta_1}{\\sin\\theta_2}=\\dfrac{v_1}{v_2}=\\dfrac{\\lambda_1}{\\lambda_2}$，光進入波速較慢的介質會偏向法線。"
+  },
+  {
+   "name": "全反射臨界角",
+   "tex": "\\sin\\theta_c=\\dfrac{n_2}{n_1}",
+   "note": "要會推；令折射角為 $90^\\circ$，只發生在由光密介質射向光疏介質（$n_1>n_2$）時。"
+  },
+  {
+   "name": "薄透鏡成像",
+   "tex": "\\dfrac{1}{p}+\\dfrac{1}{q}=\\dfrac{1}{f},\\quad m=-\\dfrac{q}{p}",
+   "note": "必背；實像 $q>0$、虛像 $q<0$，凹透鏡 $f<0$；$m<0$ 表示倒立。"
+  },
+  {
+   "name": "視深",
+   "tex": "h'=\\dfrac{h}{n}",
+   "note": "要會推；由水中往空氣近垂直觀看時成立，物體看起來比實際淺。"
+  },
+  {
+   "name": "雙狹縫干涉",
+   "tex": "d\\sin\\theta=m\\lambda\\ (\\text{亮紋}),\\quad \\Delta y=\\dfrac{L\\lambda}{d}",
+   "note": "必背；$\\Delta y$ 為相鄰亮紋間距，需 $L\\gg d$；暗紋條件為 $d\\sin\\theta=\\left(m+\\dfrac{1}{2}\\right)\\lambda$。"
+  },
+  {
+   "name": "單狹縫繞射暗紋",
+   "tex": "a\\sin\\theta=m\\lambda,\\quad m=\\pm1,\\pm2,\\ldots",
+   "note": "必背；$m\\neq0$，與雙狹縫的亮紋式長得像但意義相反；中央亮紋寬度是其他亮紋的兩倍。"
+  },
+  {
+   "name": "光程差與干涉",
+   "tex": "\\Delta L=m\\lambda\\ (\\text{建設}),\\quad \\Delta L=\\left(m+\\dfrac{1}{2}\\right)\\lambda\\ (\\text{破壞})",
+   "note": "要會推；兩道光反射時相位變化相同才直接套用；介質中的光程差要用介質中的波長計算。"
+  }
+ ],
+ "P09": [
+  {
+   "name": "庫侖定律",
+   "tex": "F=\\dfrac{kq_1q_2}{r^2}",
+   "note": "必背；$k=9.0\\times10^{9}\\ \\text{N}\\cdot\\text{m}^2/\\text{C}^2$，同性相斥、異性相吸。"
+  },
+  {
+   "name": "電場",
+   "tex": "\\vec{E}=\\dfrac{\\vec{F}}{q},\\quad E=\\dfrac{kQ}{r^2}",
+   "note": "必背；正電荷受力與電場同方向，負電荷相反；第二式只適用點電荷。"
+  },
+  {
+   "name": "電位能與電位",
+   "tex": "U=\\dfrac{kq_1q_2}{r},\\quad U=qV",
+   "note": "必背；以無窮遠為零位能，電荷要連同正負號代入。"
+  },
+  {
+   "name": "均勻電場與電位差",
+   "tex": "\\Delta V=Ed",
+   "note": "必背；$d$ 是沿電場方向的距離，沿電力線方向電位降低。"
+  },
+  {
+   "name": "歐姆定律",
+   "tex": "V=IR",
+   "note": "必背；$I$-$V$ 圖為過原點直線的元件才是歐姆元件。"
+  },
+  {
+   "name": "電阻定律",
+   "tex": "R=\\rho\\dfrac{L}{A}",
+   "note": "必背；導線拉長為 $2$ 倍時截面積變一半，電阻變 $4$ 倍。"
+  },
+  {
+   "name": "串聯與並聯",
+   "tex": "R_{\\text{串}}=R_1+R_2,\\quad \\dfrac{1}{R_{\\text{並}}}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}",
+   "note": "必背；串聯電流相同，並聯電壓相同。"
+  },
+  {
+   "name": "電功率",
+   "tex": "P=IV=I^2R=\\dfrac{V^2}{R}",
+   "note": "必背；串聯比較用 $I^2R$，並聯比較用 $\\dfrac{V^2}{R}$。"
+  },
+  {
+   "name": "電池端電壓",
+   "tex": "V=\\varepsilon-Ir",
+   "note": "必背；$r$ 為內電阻，電流越大端電壓越低，斷路時端電壓等於電動勢。"
+  }
+ ],
+ "P10": [
+  {
+   "name": "長直導線磁場",
+   "tex": "B=\\dfrac{\\mu_0I}{2\\pi r}",
+   "note": "必背；方向用右手定則，拇指指電流方向、四指繞向為磁場方向。"
+  },
+  {
+   "name": "螺線管磁場",
+   "tex": "B=\\mu_0nI",
+   "note": "必背；$n$ 為每單位長度的匝數，不是總匝數。"
+  },
+  {
+   "name": "載流導線受磁力",
+   "tex": "F=ILB\\sin\\theta",
+   "note": "必背；向量式為 $\\vec{F}=I\\vec{L}\\times\\vec{B}$，電流與磁場平行時不受力。"
+  },
+  {
+   "name": "帶電粒子在磁場中",
+   "tex": "F=qvB,\\quad r=\\dfrac{mv}{qB}",
+   "note": "要會推；$\\vec{v}$ 垂直 $\\vec{B}$ 時由 $qvB=\\dfrac{mv^2}{r}$ 推得；磁力不作功，速率不變。"
+  },
+  {
+   "name": "磁通量",
+   "tex": "\\Phi_B=BA\\cos\\theta",
+   "note": "必背；$\\theta$ 是磁場與線圈面法線的夾角，磁場垂直線圈面時 $\\Phi_B=BA$。"
+  },
+  {
+   "name": "法拉第定律",
+   "tex": "\\varepsilon=-N\\dfrac{\\Delta\\Phi_B}{\\Delta t}",
+   "note": "必背；負號就是冷次定律，感應電流的磁場要抵抗磁通量的變化。"
+  },
+  {
+   "name": "動生電動勢",
+   "tex": "\\varepsilon=BLv",
+   "note": "要會推；導體棒垂直磁場移動時，由單位時間掃過的面積乘 $B$ 推得。"
+  },
+  {
+   "name": "理想變壓器",
+   "tex": "\\dfrac{V_1}{V_2}=\\dfrac{N_1}{N_2}=\\dfrac{I_2}{I_1}",
+   "note": "必背；只能用於交流電，理想時輸入功率等於輸出功率。"
+  },
+  {
+   "name": "馬呂斯定律",
+   "tex": "I=I_0\\cos^2\\theta",
+   "note": "必背；$\\theta$ 為偏振方向與偏振片透射軸的夾角，自然光通過第一片偏振片強度先減半。"
+  }
+ ],
+ "P11": [
+  {
+   "name": "光子能量",
+   "tex": "E=hf=\\dfrac{hc}{\\lambda}",
+   "note": "必背；波長越短能量越大，$hc\\approx1240\\ \\text{eV}\\cdot\\text{nm}$ 可快速換算。"
+  },
+  {
+   "name": "光電方程式",
+   "tex": "eV_s=K_{\\max}=hf-W",
+   "note": "必背；$W$ 為功函數，$hf<W$ 時不論光多強都不會放出電子；光強只影響光電流大小。"
+  },
+  {
+   "name": "物質波",
+   "tex": "\\lambda=\\dfrac{h}{p}=\\dfrac{h}{\\sqrt{2mK}}",
+   "note": "必背；電子經電壓 $V$ 加速時 $K=eV$，非相對論情形才可用第二式。"
+  },
+  {
+   "name": "氫原子能階",
+   "tex": "E_n=-\\dfrac{13.6}{n^2}\\ \\text{eV}",
+   "note": "必背；$n=1$ 為基態，游離能為 $13.6\\ \\text{eV}$；能量為負代表束縛態。"
+  },
+  {
+   "name": "能階躍遷",
+   "tex": "hf=E_{\\text{高}}-E_{\\text{低}}",
+   "note": "必背；放出或吸收的光子能量等於兩能階差，能階越密集譜線越接近。"
+  },
+  {
+   "name": "波耳模型",
+   "tex": "L=mvr=\\dfrac{nh}{2\\pi},\\quad r_n=n^2r_1",
+   "note": "要會推；由角動量量子化與庫侖力提供向心力聯立；動能 $K=-E_n$。"
+  },
+  {
+   "name": "放射性衰變",
+   "tex": "N=N_0\\left(\\dfrac{1}{2}\\right)^{t/T}",
+   "note": "必背；$T$ 為半衰期，經過幾個半衰期就乘幾次 $\\dfrac{1}{2}$。"
+  },
+  {
+   "name": "質能互換",
+   "tex": "E=\\Delta m\\,c^2",
+   "note": "必背；$\\Delta m$ 為反應前後的質量虧損，$c=3.0\\times10^{8}\\ \\text{m/s}$。"
+  },
+  {
+   "name": "$\\alpha$ 衰變",
+   "tex": "{}^{A}_{Z}\\mathrm{X}\\rightarrow{}^{A-4}_{Z-2}\\mathrm{Y}+{}^{4}_{2}\\mathrm{He}",
+   "note": "必背；核反應前後質量數與電荷數都守恆；$\\beta$ 衰變質量數不變、原子序加 $1$。"
+  }
+ ],
+ "C01": [
+  {
+   "name": "質量數",
+   "tex": "A=Z+N",
+   "note": "必背；$Z$ 為質子數，中性原子電子數等於 $Z$，離子要再依電荷加減電子。"
+  },
+  {
+   "name": "平均原子量",
+   "tex": "\\overline{M}=\\sum X_iM_i",
+   "note": "必背；$X_i$ 為各同位素的天然含量，用百分率時要除以 $100$。"
+  },
+  {
+   "name": "電子層容量",
+   "tex": "N_{\\max}=2n^2",
+   "note": "必背；第 $n$ 層最多容納的電子數，價電子數決定元素在週期表的族。"
+  },
+  {
+   "name": "光子能量",
+   "tex": "E=h\\nu=\\dfrac{hc}{\\lambda}",
+   "note": "必背；用於能階躍遷與光譜計算，波長要換成公尺。"
+  },
+  {
+   "name": "氫原子能階",
+   "tex": "E_n=-\\dfrac{13.6}{n^2}\\ \\text{eV}=-\\dfrac{1312}{n^2}\\ \\text{kJ/mol}",
+   "note": "必背；只適用氫原子，$n$ 越大能量越高、能階越密。"
+  },
+  {
+   "name": "類氫離子能階",
+   "tex": "E_n=-\\dfrac{13.6\\,Z^2}{n^2}\\ \\text{eV}",
+   "note": "要會推；只適用單電子的原子或離子，如 $\\mathrm{He^+}$、$\\mathrm{Li^{2+}}$。"
+  },
+  {
+   "name": "氫原子光譜",
+   "tex": "\\dfrac{1}{\\lambda}=R_H\\left(\\dfrac{1}{n_1^2}-\\dfrac{1}{n_2^2}\\right)",
+   "note": "要會推；$n_1=1$ 為來曼系（紫外光），$n_1=2$ 為巴耳末系（可見光）。"
+  }
+ ],
+ "C02": [
+  {
+   "name": "常見原子的成鍵數",
+   "tex": "\\mathrm{C}:4,\\quad \\mathrm{N}:3,\\quad \\mathrm{O}:2,\\quad \\mathrm{H}:1",
+   "note": "必背；中性分子中的常見鍵數，可用來檢查結構式或骨架式有沒有畫錯。"
+  },
+  {
+   "name": "立體數與形狀",
+   "tex": "\\text{立體數}=\\text{鍵結原子數}+\\text{孤對電子對數}",
+   "note": "必背；立體數 $2$、$3$、$4$ 分別對應 $sp$、$sp^2$、$sp^3$ 混成，有孤對時形狀要扣掉孤對方向。"
+  },
+  {
+   "name": "形式電荷",
+   "tex": "\\text{形式電荷}=\\text{價電子數}-\\text{未鍵結電子數}-\\dfrac{\\text{鍵結電子數}}{2}",
+   "note": "要會推；各原子形式電荷總和等於粒子電荷，形式電荷越接近 $0$ 的路易斯結構越合理。"
+  },
+  {
+   "name": "鍵級與鍵長",
+   "tex": "\\text{鍵級}\\uparrow\\ \\Rightarrow\\ \\text{鍵長}\\downarrow,\\ \\text{鍵能}\\uparrow",
+   "note": "必背；共振結構的鍵級取平均，例如 $\\mathrm{O_3}$ 與 $\\mathrm{NO_2^-}$ 的鍵級都是 $1.5$。"
+  },
+  {
+   "name": "晶格配位數",
+   "tex": "\\text{簡單立方}:6,\\quad \\text{體心立方}:8,\\quad \\text{面心立方}:12",
+   "note": "必背；每個單位晶胞實際含有的粒子數分別為 $1$、$2$、$4$。"
+  },
+  {
+   "name": "單位晶胞粒子數",
+   "tex": "\\dfrac{1}{8}n_{\\text{角}}+\\dfrac{1}{2}n_{\\text{面}}+\\dfrac{1}{4}n_{\\text{邊}}+n_{\\text{體}}",
+   "note": "要會推；角、面、邊上的粒子分別被 $8$、$2$、$4$ 個晶胞共用。"
+  }
+ ],
+ "C03": [
+  {
+   "name": "莫耳數與質量",
+   "tex": "n=\\dfrac{m}{M}",
+   "note": "必背；$M$ 為莫耳質量（$\\text{g/mol}$），計量題第一步通常就是把質量換成莫耳數。"
+  },
+  {
+   "name": "莫耳數與粒子數",
+   "tex": "n=\\dfrac{N}{N_A},\\quad N_A=6.02\\times10^{23}\\ \\text{mol}^{-1}",
+   "note": "必背；問原子數時要再乘上每個分子含的該原子個數。"
+  },
+  {
+   "name": "氣體莫耳體積",
+   "tex": "n=\\dfrac{V}{V_m}",
+   "note": "必背；$0^\\circ\\text{C}$、$1\\ \\text{atm}$ 時 $V_m=22.4\\ \\text{L/mol}$，$25^\\circ\\text{C}$ 時約 $24.5\\ \\text{L/mol}$；只適用氣體。"
+  },
+  {
+   "name": "體積莫耳濃度",
+   "tex": "C_M=\\dfrac{n}{V}",
+   "note": "必背；$V$ 是溶液體積且以升為單位，不是溶劑體積。"
+  },
+  {
+   "name": "係數比等於莫耳數比",
+   "tex": "\\dfrac{n_{\\mathrm{A}}}{a}=\\dfrac{n_{\\mathrm{B}}}{b}",
+   "note": "必背；$a$、$b$ 為反應式係數，係數比不是質量比；兩反應物都給量時先找限量試劑。"
+  },
+  {
+   "name": "產率",
+   "tex": "\\text{產率}=\\dfrac{\\text{實際產量}}{\\text{理論產量}}\\times100\\%",
+   "note": "必背；理論產量由限量試劑算出。"
+  },
+  {
+   "name": "元素質量百分率",
+   "tex": "\\dfrac{\\text{原子量}\\times\\text{原子個數}}{\\text{分子量}}\\times100\\%",
+   "note": "必背；反過來由各元素百分率除以原子量可求簡式。"
+  },
+  {
+   "name": "燃燒分析",
+   "tex": "m_{\\mathrm{C}}=m_{\\mathrm{CO_2}}\\times\\dfrac{12}{44},\\quad m_{\\mathrm{H}}=m_{\\mathrm{H_2O}}\\times\\dfrac{2}{18}",
+   "note": "要會推；氧的質量要由樣品總質量扣掉碳與氫，不能由產物直接算。"
+  },
+  {
+   "name": "烷類完全燃燒",
+   "tex": "\\mathrm{C_nH_{2n+2}}+\\dfrac{3n+1}{2}\\mathrm{O_2}\\rightarrow n\\mathrm{CO_2}+(n+1)\\mathrm{H_2O}",
+   "note": "要會推；依碳、氫、氧的順序做原子守恆即可平衡。"
+  }
+ ],
+ "C04": [
+  {
+   "name": "理想氣體方程式",
+   "tex": "PV=nRT",
+   "note": "必背；$R=0.082\\ \\text{atm}\\cdot\\text{L}/(\\text{mol}\\cdot\\text{K})$，$T$ 一定要用絕對溫度。"
+  },
+  {
+   "name": "定量氣體的狀態變化",
+   "tex": "\\dfrac{P_1V_1}{T_1}=\\dfrac{P_2V_2}{T_2}",
+   "note": "要會推；由 $PV=nRT$ 令 $n$ 固定得到，定溫即波以耳定律、定壓即查理定律。"
+  },
+  {
+   "name": "氣體密度",
+   "tex": "d=\\dfrac{PM}{RT}",
+   "note": "要會推；把 $n=\\dfrac{m}{M}$ 代入 $PV=nRT$ 推得，同溫同壓下密度與分子量成正比。"
+  },
+  {
+   "name": "道耳頓分壓定律",
+   "tex": "P_{\\text{總}}=P_1+P_2+\\cdots",
+   "note": "必背；排水集氣法收集的氣體要扣掉該溫度的飽和水蒸氣壓。"
+  },
+  {
+   "name": "分壓與莫耳分率",
+   "tex": "P_i=X_iP_{\\text{總}}",
+   "note": "必背；同溫同體積下分壓比等於莫耳數比。"
+  },
+  {
+   "name": "平均分子量",
+   "tex": "\\overline{M}=\\sum X_iM_i",
+   "note": "必背；$X_i$ 為莫耳分率，不是質量分率。"
+  },
+  {
+   "name": "格雷姆擴散定律",
+   "tex": "\\dfrac{r_1}{r_2}=\\sqrt{\\dfrac{M_2}{M_1}}",
+   "note": "必背；同溫同壓下成立，分子量小的氣體擴散較快。"
+  }
+ ],
+ "C05": [
+  {
+   "name": "重量百分濃度",
+   "tex": "w\\%=\\dfrac{m_{\\text{溶質}}}{m_{\\text{溶液}}}\\times100\\%",
+   "note": "必背；分母是溶液質量，等於溶質加溶劑。"
+  },
+  {
+   "name": "百萬分點",
+   "tex": "\\text{ppm}=\\dfrac{m_{\\text{溶質}}}{m_{\\text{溶液}}}\\times10^{6}",
+   "note": "必背；稀薄水溶液密度約 $1\\ \\text{g/mL}$，此時 $1\\ \\text{ppm}\\approx1\\ \\text{mg/L}$。"
+  },
+  {
+   "name": "體積莫耳濃度",
+   "tex": "C_M=\\dfrac{n_{\\text{溶質}}}{V_{\\text{溶液}}(\\text{L})}",
+   "note": "必背；會隨溫度改變，因為溶液體積會熱脹冷縮。"
+  },
+  {
+   "name": "重量莫耳濃度",
+   "tex": "C_m=\\dfrac{n_{\\text{溶質}}}{m_{\\text{溶劑}}(\\text{kg})}",
+   "note": "必背；分母是溶劑質量且用公斤，沸點上升與凝固點下降要用它。"
+  },
+  {
+   "name": "稀釋",
+   "tex": "C_1V_1=C_2V_2",
+   "note": "必背；稀釋前後溶質莫耳數不變。"
+  },
+  {
+   "name": "拉午耳定律",
+   "tex": "P=X_{\\text{溶劑}}P^{\\circ}_{\\text{溶劑}}",
+   "note": "必背；理想溶液且溶質不揮發時成立，溶液蒸氣壓比純溶劑低。"
+  },
+  {
+   "name": "沸點上升與凝固點下降",
+   "tex": "\\Delta T_b=K_bC_m\\,i,\\quad \\Delta T_f=K_fC_m\\,i",
+   "note": "必背；$i$ 為凡特何夫因子，例如 $\\mathrm{NaCl}$ 完全解離時 $i=2$，非電解質 $i=1$。"
+  },
+  {
+   "name": "滲透壓",
+   "tex": "\\pi=C_MRT\\,i",
+   "note": "必背；用體積莫耳濃度而不是重量莫耳濃度，常用來求高分子的分子量。"
+  },
+  {
+   "name": "飽和溶液的濃度",
+   "tex": "w\\%=\\dfrac{S}{100+S}\\times100\\%",
+   "note": "要會推；$S$ 為每 $100\\ \\text{g}$ 水最多可溶解的溶質克數，只適用飽和溶液。"
+  }
+ ],
+ "C06": [
+  {
+   "name": "由生成熱求反應熱",
+   "tex": "\\Delta H=\\sum\\Delta H_f(\\text{生成物})-\\sum\\Delta H_f(\\text{反應物})",
+   "note": "必背；元素在最穩定狀態的生成熱為 $0$，記得乘上係數。"
+  },
+  {
+   "name": "由鍵能求反應熱",
+   "tex": "\\Delta H=\\sum(\\text{斷鍵鍵能})-\\sum(\\text{成鍵鍵能})",
+   "note": "必背；減法順序與生成熱公式相反，斷鍵吸熱、成鍵放熱。"
+  },
+  {
+   "name": "赫斯定律",
+   "tex": "\\Delta H=\\Delta H_1+\\Delta H_2+\\cdots",
+   "note": "必背；反應式反向時 $\\Delta H$ 變號，係數乘幾倍 $\\Delta H$ 也乘幾倍。"
+  },
+  {
+   "name": "反應熱與莫耳數",
+   "tex": "Q=n\\,|\\Delta H|",
+   "note": "必背；放熱反應 $\\Delta H<0$，題目問放出多少熱時取絕對值。"
+  },
+  {
+   "name": "溫度變化所需熱量",
+   "tex": "Q=mc\\Delta T=nC\\Delta T",
+   "note": "必背；$c$ 為每克比熱，$C$ 為莫耳熱容量，注意單位要配合。"
+  },
+  {
+   "name": "相變所需熱量",
+   "tex": "Q=n\\,\\Delta H_{\\text{相變}}",
+   "note": "必背；相變過程溫度不變，加熱曲線的平台段要用此式。"
+  },
+  {
+   "name": "卡計測反應熱",
+   "tex": "Q_{\\text{反應}}=-(mc+C_{\\text{卡}})\\Delta T",
+   "note": "要會推；反應放出的熱被溶液與卡計吸收，溫度上升代表放熱、$\\Delta H<0$。"
+  }
+ ],
+ "C07": [
+  {
+   "name": "反應速率的定義",
+   "tex": "r=-\\dfrac{1}{a}\\dfrac{\\Delta[\\mathrm{A}]}{\\Delta t}=\\dfrac{1}{b}\\dfrac{\\Delta[\\mathrm{B}]}{\\Delta t}",
+   "note": "必背；用於 $a\\mathrm{A}\\rightarrow b\\mathrm{B}$，各物質的消耗或生成速率比等於係數比。"
+  },
+  {
+   "name": "速率定律",
+   "tex": "r=k[\\mathrm{A}]^m[\\mathrm{B}]^n",
+   "note": "必背；級數 $m$、$n$ 由實驗決定，不一定等於反應式係數；$k$ 只受溫度與催化劑影響。"
+  },
+  {
+   "name": "由數據求級數",
+   "tex": "\\dfrac{r_2}{r_1}=\\left(\\dfrac{[\\mathrm{A}]_2}{[\\mathrm{A}]_1}\\right)^m",
+   "note": "要會推；挑其他反應物濃度相同的兩組實驗相除。"
+  },
+  {
+   "name": "速率與時間",
+   "tex": "r\\propto\\dfrac{1}{t}",
+   "note": "要會推；每組實驗都以同一終點計時（如剛好變色）時才成立。"
+  },
+  {
+   "name": "零級反應",
+   "tex": "[\\mathrm{A}]=[\\mathrm{A}]_0-kt",
+   "note": "必背；濃度對時間圖為直線，速率與濃度無關。"
+  },
+  {
+   "name": "一級反應半衰期",
+   "tex": "t_{1/2}=\\dfrac{0.693}{k}",
+   "note": "必背；半衰期與初濃度無關，濃度每經一個半衰期就減半。"
+  },
+  {
+   "name": "活化能與反應熱",
+   "tex": "\\Delta H=E_{a,\\text{正}}-E_{a,\\text{逆}}",
+   "note": "必背；催化劑同時降低正、逆反應的活化能，但不改變 $\\Delta H$ 與平衡常數。"
+  }
+ ],
+ "C08": [
+  {
+   "name": "平衡常數",
+   "tex": "K_c=\\dfrac{[\\mathrm{C}]^c[\\mathrm{D}]^d}{[\\mathrm{A}]^a[\\mathrm{B}]^b}",
+   "note": "必背；純固體與純液體不列入，$K$ 只隨溫度改變。"
+  },
+  {
+   "name": "$K_p$ 與 $K_c$",
+   "tex": "K_p=K_c(RT)^{\\Delta n}",
+   "note": "要會推；$\\Delta n$ 為氣體生成物係數和減氣體反應物係數和，由 $P=CRT$ 代入推得。"
+  },
+  {
+   "name": "反應商判斷方向",
+   "tex": "Q<K\\Rightarrow\\text{正向},\\quad Q>K\\Rightarrow\\text{逆向}",
+   "note": "必背；$Q$ 的寫法與 $K$ 相同，只是代入當下濃度，$Q=K$ 時達平衡。"
+  },
+  {
+   "name": "反應式改寫與 $K$",
+   "tex": "K_{\\text{逆}}=\\dfrac{1}{K},\\quad K_{\\text{乘}n\\text{倍}}=K^{n}",
+   "note": "必背；兩式相加時 $K$ 相乘，與赫斯定律中 $\\Delta H$ 相加對應。"
+  },
+  {
+   "name": "溶度積",
+   "tex": "\\mathrm{AgCl}(s)\\rightleftharpoons\\mathrm{Ag^+}+\\mathrm{Cl^-},\\quad K_{sp}=[\\mathrm{Ag^+}][\\mathrm{Cl^-}]",
+   "note": "必背；溶液中有固體存在（飽和）時才成立。"
+  },
+  {
+   "name": "溶度積與溶解度",
+   "tex": "\\mathrm{AB}:\\ K_{sp}=s^2,\\quad \\mathrm{AB_2}:\\ K_{sp}=4s^3",
+   "note": "要會推；依解離式列出離子濃度再代入；不同型鹽不能直接比 $K_{sp}$ 判斷溶解度。"
+  },
+  {
+   "name": "沉澱判斷",
+   "tex": "Q_{sp}>K_{sp}\\Rightarrow\\text{產生沉澱}",
+   "note": "必背；混合後要先算稀釋後的濃度；加入共同離子會使溶解度下降。"
+  }
+ ],
+ "C09": [
+  {
+   "name": "pH 的定義",
+   "tex": "\\mathrm{pH}=-\\log[\\mathrm{H^+}]",
+   "note": "必背；$\\mathrm{pH}$ 差 $1$，氫離子濃度差 $10$ 倍。"
+  },
+  {
+   "name": "水的離子積",
+   "tex": "K_w=[\\mathrm{H^+}][\\mathrm{OH^-}]=1.0\\times10^{-14}",
+   "note": "必背；$25^\\circ\\text{C}$ 時成立，所以 $\\mathrm{pH}+\\mathrm{pOH}=14$。"
+  },
+  {
+   "name": "中和反應",
+   "tex": "n_{\\mathrm{H^+}}=n_{\\mathrm{OH^-}}",
+   "note": "必背；以可解離的氫離子與氫氧根總莫耳數計，與酸鹼強弱無關，例如 $\\mathrm{H_2SO_4}$ 每莫耳提供 $2$ 莫耳 $\\mathrm{H^+}$。"
+  },
+  {
+   "name": "強酸強鹼混合後",
+   "tex": "[\\mathrm{H^+}]=\\dfrac{n_{\\mathrm{H^+}}-n_{\\mathrm{OH^-}}}{V_{\\text{總}}}",
+   "note": "要會推；酸過量時成立，鹼過量則改求 $[\\mathrm{OH^-}]$；體積要相加。"
+  },
+  {
+   "name": "弱酸的氫離子濃度",
+   "tex": "[\\mathrm{H^+}]\\approx\\sqrt{K_aC}",
+   "note": "要會推；解離度很小（約 $5\\%$ 以下）時才可近似，弱鹼同理 $[\\mathrm{OH^-}]\\approx\\sqrt{K_bC}$。"
+  },
+  {
+   "name": "解離度",
+   "tex": "\\alpha=\\dfrac{[\\mathrm{H^+}]}{C}\\approx\\sqrt{\\dfrac{K_a}{C}}",
+   "note": "要會推；弱酸越稀釋解離度越大，但氫離子濃度仍變小。"
+  },
+  {
+   "name": "共軛酸鹼對",
+   "tex": "K_aK_b=K_w",
+   "note": "必背；酸越強其共軛鹼越弱，用來求弱酸鹽水解的 $K_b$。"
+  },
+  {
+   "name": "緩衝溶液",
+   "tex": "\\mathrm{pH}=\\mathrm{p}K_a+\\log\\dfrac{[\\mathrm{A^-}]}{[\\mathrm{HA}]}",
+   "note": "要會推；由 $K_a$ 定義取對數得到，半當量點 $[\\mathrm{A^-}]=[\\mathrm{HA}]$，此時 $\\mathrm{pH}=\\mathrm{p}K_a$。"
+  }
+ ],
+ "C10": [
+  {
+   "name": "氧化數總和",
+   "tex": "\\sum\\text{氧化數}=\\text{粒子電荷}",
+   "note": "必背；化合物中 $\\mathrm{O}$ 通常為 $-2$、$\\mathrm{H}$ 通常為 $+1$，但過氧化物中 $\\mathrm{O}$ 為 $-1$。"
+  },
+  {
+   "name": "電子得失守恆",
+   "tex": "n_{e^-,\\text{失}}=n_{e^-,\\text{得}}",
+   "note": "必背；平衡氧化還原反應式與滴定計算的核心，氧化數升高者被氧化、為還原劑。"
+  },
+  {
+   "name": "過錳酸根半反應",
+   "tex": "\\mathrm{MnO_4^-}+8\\mathrm{H^+}+5e^-\\rightarrow\\mathrm{Mn^{2+}}+4\\mathrm{H_2O}",
+   "note": "必背；酸性溶液中每個 $\\mathrm{MnO_4^-}$ 得 $5$ 個電子，紫色褪去可當終點。"
+  },
+  {
+   "name": "氧化還原滴定",
+   "tex": "n_{\\mathrm{Fe^{2+}}}=5\\,n_{\\mathrm{MnO_4^-}}",
+   "note": "要會推；$\\mathrm{Fe^{2+}}$ 失 $1$ 個電子、$\\mathrm{MnO_4^-}$ 得 $5$ 個電子，由電子守恆推得。"
+  },
+  {
+   "name": "電池電動勢",
+   "tex": "E^{\\circ}_{\\text{電池}}=E^{\\circ}_{\\text{正極}}-E^{\\circ}_{\\text{負極}}",
+   "note": "必背；兩者都用還原電位，結果為正才能自發；半反應乘倍數時電位不乘。"
+  },
+  {
+   "name": "電量與電子莫耳數",
+   "tex": "n_{e^-}=\\dfrac{It}{F},\\quad F=96500\\ \\text{C/mol}",
+   "note": "必背；$t$ 用秒，串聯電解槽通過的電量相同。"
+  },
+  {
+   "name": "電解析出量",
+   "tex": "m=\\dfrac{It}{F}\\times\\dfrac{M}{z}",
+   "note": "要會推；$z$ 為每莫耳產物需要的電子莫耳數，例如 $\\mathrm{Cu^{2+}}$ 還原成 $\\mathrm{Cu}$ 時 $z=2$。"
+  },
+  {
+   "name": "電解濃食鹽水",
+   "tex": "2\\mathrm{NaCl}+2\\mathrm{H_2O}\\rightarrow2\\mathrm{NaOH}+\\mathrm{H_2}+\\mathrm{Cl_2}",
+   "note": "必背；陰極產生 $\\mathrm{H_2}$ 並使溶液變鹼性，陽極產生 $\\mathrm{Cl_2}$。"
+  }
+ ],
+ "C11": [
+  {
+   "name": "不飽和度",
+   "tex": "\\text{不飽和度}=\\dfrac{2C+2+N-H-X}{2}",
+   "note": "必背；每個雙鍵或環貢獻 $1$、參鍵貢獻 $2$，苯環為 $4$；$X$ 為鹵素原子數，氧不影響。"
+  },
+  {
+   "name": "烴類通式",
+   "tex": "\\text{烷}:\\mathrm{C_nH_{2n+2}},\\quad \\text{烯}:\\mathrm{C_nH_{2n}},\\quad \\text{炔}:\\mathrm{C_nH_{2n-2}}",
+   "note": "必背；環烷也符合 $\\mathrm{C_nH_{2n}}$，所以同分子式可能是烯或環烷。"
+  },
+  {
+   "name": "加成反應",
+   "tex": "\\mathrm{CH_2{=}CH_2}+\\mathrm{Br_2}\\rightarrow\\mathrm{CH_2BrCH_2Br}",
+   "note": "必背；烯、炔可使溴水褪色，烷與苯環不行，可用來檢驗不飽和鍵。"
+  },
+  {
+   "name": "醇的氧化",
+   "tex": "\\text{一級醇}\\xrightarrow{[\\mathrm{O}]}\\text{醛}\\xrightarrow{[\\mathrm{O}]}\\text{羧酸}",
+   "note": "必背；二級醇氧化成酮，三級醇不易被氧化；醛可用多侖試劑檢驗。"
+  },
+  {
+   "name": "酯化反應",
+   "tex": "\\mathrm{RCOOH}+\\mathrm{R'OH}\\rightleftharpoons\\mathrm{RCOOR'}+\\mathrm{H_2O}",
+   "note": "必背；以濃硫酸催化，逆反應為酯的水解。"
+  },
+  {
+   "name": "皂化反應",
+   "tex": "\\text{油脂}+3\\mathrm{NaOH}\\rightarrow\\text{甘油}+3\\mathrm{RCOONa}",
+   "note": "必背；油脂與 $\\mathrm{NaOH}$ 的莫耳比為 $1:3$，產物脂肪酸鈉就是肥皂。"
+  },
+  {
+   "name": "醯胺（肽鍵）生成",
+   "tex": "\\mathrm{RCOOH}+\\mathrm{R'NH_2}\\rightarrow\\mathrm{RCONHR'}+\\mathrm{H_2O}",
+   "note": "必背；縮合時脫去水，蛋白質中的肽鍵就是醯胺鍵。"
+  },
+  {
+   "name": "加成聚合",
+   "tex": "n\\,\\mathrm{CH_2{=}CH_2}\\rightarrow\\left(\\mathrm{CH_2{-}CH_2}\\right)_n",
+   "note": "必背；加成聚合不產生小分子，縮合聚合則會脫去水等小分子。"
+  }
+ ],
+ "C12": [
+  {
+   "name": "層析的 $R_f$ 值",
+   "tex": "R_f=\\dfrac{\\text{成分移動距離}}{\\text{展開液移動距離}}",
+   "note": "必背；兩者都從起點線量起，$R_f<1$，與成分及展開液性質有關、與展開時間無關。"
+  },
+  {
+   "name": "吸光度與濃度",
+   "tex": "A=\\varepsilon bc\\propto c",
+   "note": "必背；同一物質、同一波長且溶液稀薄時成立，可用檢量線求未知濃度。"
+  },
+  {
+   "name": "酸鹼滴定（標定）",
+   "tex": "aC_{\\text{酸}}V_{\\text{酸}}=bC_{\\text{鹼}}V_{\\text{鹼}}",
+   "note": "必背；$a$、$b$ 為每分子可提供的 $\\mathrm{H^+}$、$\\mathrm{OH^-}$ 數；$\\mathrm{NaOH}$ 易吸水與 $\\mathrm{CO_2}$，使用前要先標定。"
+  },
+  {
+   "name": "重量分析",
+   "tex": "w\\%=\\dfrac{m_{\\text{沉澱}}}{m_{\\text{樣品}}}\\times\\dfrac{aM_{\\text{目標}}}{M_{\\text{沉澱}}}\\times100\\%",
+   "note": "要會推；$a$ 為每個沉澱粒子含目標成分的個數，沉澱必須完全且洗淨烘乾。"
+  },
+  {
+   "name": "分配係數",
+   "tex": "K_D=\\dfrac{[\\mathrm{A}]_{\\text{有機層}}}{[\\mathrm{A}]_{\\text{水層}}}",
+   "note": "要會推；同量溶劑分多次萃取比一次萃取的效率高。"
+  },
+  {
+   "name": "再結晶析出量",
+   "tex": "\\text{析出量}=\\text{高溫溶解量}-\\text{低溫溶解量}",
+   "note": "要會推；由溶解度曲線讀數，雜質量少時會留在溶液中而被分離。"
+  },
+  {
+   "name": "移除率",
+   "tex": "\\text{移除率}=\\dfrac{C_0-C}{C_0}\\times100\\%",
+   "note": "必背；$C_0$ 為處理前濃度，比較不同方法時要在相同條件下。"
+  }
+ ]
+}
